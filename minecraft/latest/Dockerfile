@@ -7,6 +7,8 @@ LABEL       org.opencontainers.image.licenses="MIT"
 
 RUN         apt-get update -y \
             && apt-get install -y --no-install-recommends curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 libstdc++6 lsof build-essential tzdata iproute2 locales \
+            && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+            && apt-get install -y nodejs \
             && apt-get clean \
             && rm -rf /var/lib/apt/lists/* \
             && useradd -m -d /home/container container \
